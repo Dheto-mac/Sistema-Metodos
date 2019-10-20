@@ -6,7 +6,203 @@ double error = 0.00000001;
 double c;
 
 using namespace std;
+void gaussjordan3x3()
+{
+		int i,j;
+    float mat[3][4],x,y,z,aux;
+    for(i=0;i<3;i++)
+    {
+    	for(j=0;j<4;j++)
+     	{
+    	scanf("%f",&mat[i][j]);
+      }
+        putchar('\n');
+    }
+    if((mat[0][0]== 0) || (mat[0][0]==0 && mat[1][1]==0 && mat[2][2]==0))
+    {
+       cout<<"El sistema no tiene solucion por el metodo de Gauss\n";
+       exit(1);
+    }
+     
+    aux=(mat[1][0]/mat[0][0])*(-1);
+    for(i=0;i<4;i++)
+ 	  mat[1][i] =(aux*mat[0][i])+mat[1][i]; 
+ 	
+    aux=(mat[2][0]/mat[0][0])*(-1);
+    for( i=0;i<4;i++)
+ 	   mat[2][i] =(aux*mat[0][i])+mat[2][i];
+  
+  if(mat[0][0]==0&&mat[0][1]==0&&mat[0][2]==0||
+	   mat[1][0]==0&&mat[1][1]==0&&mat[1][2]==0||
+	   mat[2][0]==0&&mat[2][1]==0&&mat[2][2]==0)
+ 	  {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+     }
+ 	
+   aux=(mat[0][1]/mat[1][1])*(-1);
+   for( i=0;i<4;i++)
+ 	   mat[0][i] =(aux*mat[1][i])+mat[0][i];
 
+ 	aux=(mat[2][1]/mat[1][1])*(-1);
+ 	for( i=0;i<4;i++)
+ 	   mat[2][i] =(aux*mat[1][i])+mat[2][i];
+  
+  if(mat[0][0]==0&&mat[0][1]==0&&mat[0][2]==0||
+	   mat[1][0]==0&&mat[1][1]==0&&mat[1][2]==0||
+	   mat[2][0]==0&&mat[2][1]==0&&mat[2][2]==0)
+ 	  {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+    }
+ 	   
+ 	aux=(mat[0][2]/mat[2][2])*(-1);
+ 	for( i=0;i<4;i++)
+ 	   mat[0][i] =(aux*mat[2][i])+mat[0][i];
+ 	   
+ 	aux=(mat[1][2]/mat[2][2])*(-1);
+ 	for( i=0;i<4;i++)
+ 	   mat[1][i] =(aux*mat[2][i])+mat[1][i];
+ 	
+ 	for(i=0;i<3;i++)
+    {
+    	for(j=0;j<4;j++)
+     	{
+    	printf("%f ",mat[i][j]);
+      }
+      putchar('\n');
+    }
+ 	   
+ 	x= mat[0][3]/mat[0][0];
+ 	y= mat[1][3]/mat[1][1];
+ 	z= mat[2][3]/mat[2][2];  
+ 	
+ 	if(mat[0][0]==0&&mat[0][1]==0&&mat[0][2]==0||
+	   mat[1][0]==0&&mat[1][1]==0&&mat[1][2]==0||
+	   mat[2][0]==0&&mat[2][1]==0&&mat[2][2]==0)
+ 	  {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+    }
+ 	   
+ 	printf("x = %f \n",x);
+    printf("y = %f \n",y);
+    printf("z = %f \n",z);
+}
+void gaussjordan2x2()
+{
+	int i,j;
+	float mat[2][3],x,y,aux;
+	
+	for(i=0;i<2;i++)
+    {
+    	for(j=0;j<3;j++)
+     	{
+    	scanf("%f",&mat[i][j]);
+      }
+        putchar('\n');
+    }
+    aux=(mat[1][0]/mat[0][0])*(-1);
+    for(i=0;i<3;i++)
+ 	  mat[1][i] =(aux*mat[0][i])+mat[1][i];
+ 	
+	 if(mat[0][0]==0&&mat[0][1]==0||mat[1][0]==0&&mat[1][1]==0)
+ 	 {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+    }
+ 	  
+ 	aux=(mat[0][1]/mat[1][1])*(-1);
+    for( i=0;i<4;i++)
+ 	   mat[0][i] =(aux*mat[1][i])+mat[0][i];
+ 	   
+ 	 if(mat[0][0]==0&&mat[0][1]==0||mat[1][0]==0&&mat[1][1]==0)
+ 	 {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+    }
+	  y= mat[0][2]/mat[0][0];
+	  x= mat[1][2]/mat[1][1];
+	printf("x = %f \n",x);
+  printf("y = %f \n",y);
+}
+void gauss3x3()
+{
+
+	int i,j;
+    float mat[3][4],x,y,z,aux,aux2;
+    for(i=0;i<3;i++)
+    {
+    	for(j=0;j<4;j++)
+     	{
+    	scanf("%f",&mat[i][j]);
+        }
+        putchar('\n');
+    }
+    if((mat[0][0]== 0) || (mat[0][0]==0 && mat[1][1]==0 && mat[2][2]==0))
+    {
+       cout<<"El sistema no tiene solucion por el metodo de Gauss\n";
+       exit(1);
+    }
+     
+    aux=(mat[1][0]/mat[0][0])*(-1);
+    for(i=0;i<4;i++)
+ 	  mat[1][i] =(aux*mat[0][i])+mat[1][i]; 
+ 	
+    aux=(mat[2][0]/mat[0][0])*(-1);
+    for( i=0;i<4;i++)
+ 	   mat[2][i] =(aux*mat[0][i])+mat[2][i];
+ 	
+    aux=(mat[2][1]/mat[1][1])*(-1);
+    for( i=0;i<4;i++)
+ 	   mat[2][i] =(aux*mat[1][i])+mat[2][i];
+ 	   
+ 	z=mat[2][3]/mat[2][2];
+ 	y=(mat[1][3]-(mat[1][2]*z))/mat[1][1];
+ 	x=((mat[0][3])-(mat[0][1]*y)-(mat[0][2]*z))/mat[0][0];
+ 	
+ 	if(mat[0][0]==0&&mat[0][1]==0&&mat[0][2]==0||
+	   mat[1][0]==0&&mat[1][1]==0&&mat[1][2]==0||
+	   mat[2][0]==0&&mat[2][1]==0&&mat[2][2]==0)
+ 	  {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+      }
+ 	   
+ 	printf("x = %f \n",x);
+    printf("y = %f \n",y);
+    printf("z = %f \n",z);
+	
+}
+void gauss2x2()
+{
+	int i,j;
+	float mat[2][3],x,y,aux;
+	for(i=0;i<2;i++)
+    {
+    	for(j=0;j<3;j++)
+     	{
+    	scanf("%f",&mat[i][j]);
+        }
+        putchar('\n');
+    }
+
+    aux=(mat[1][0]/mat[0][0])*(-1);
+    for(i=0;i<3;i++)
+ 	  mat[1][i] =(aux*mat[0][i])+mat[1][i];
+ 	  
+ 	if(mat[0][0]==0&&mat[0][1]==0||mat[1][0]==0&&mat[1][1]==0)
+ 	 {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+     }
+	   
+	  y=mat[1][2]/mat[1][1]; 
+	  x=mat[0][2]-(mat[0][1]*y);
+	printf("x = %f \n",x);
+  printf("y = %f \n",y);
+	
+}
 //pide los intervalos
 void intervalos(double *a, double *b){
   cout << "Introduzca primer intervalo: ";
