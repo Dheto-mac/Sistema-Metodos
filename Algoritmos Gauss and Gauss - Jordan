@@ -1,0 +1,60 @@
+void gauss2x2(double **mat)
+{
+	int i,j;
+	double x,y,aux;
+	
+
+    aux=(*(*(mat+1)+0) / *(*(mat+0)+0))*(-1);
+    for(i=0;i<3;i++)
+ 	  (*(*(mat+1)+i)) =(aux * (*(*(mat+0)+i)))+ *(*(mat+1)+i);
+ 	  
+ 	if(*(*(mat+0)+0)==0&& *(*(mat+0)+1)==0||*(*(mat+1)+0)==0&& *(*(mat+1)+1)==0)
+ 	 {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+     }
+	   
+	  y=(*(*(mat+1)+2))/ (*(*(mat+1)+1)); 
+	  x=((*(*(mat+0)+2))-((*(*(mat+0)+1))*y)) / (*(*(mat+0)+0));
+ 	   
+
+	
+}
+void gauss3x3(double **mat)
+{
+
+	  int i,j;
+    double x,y,z,aux;
+
+    if((*(*(mat+0)+0)== 0) || (*(*(mat+0)+0)==0 && *(*(mat+1)+1)==0 && *(*(mat+2)+2)==0))
+    {
+       cout<<"El sistema no tiene solucion por el metodo de Gauss\n";
+       exit(1);
+    }
+     
+    aux=(*(*(mat+1)+0)/ *(*(mat+0)+0))*(-1);
+    for(i=0;i<4;i++)
+ 	  (*(*(mat+1)+i)) = (aux* (*(*(mat+0)+i)))+ (*(*(mat+1)+i)); 
+ 	
+    aux=(*(*(mat+2)+0)/ (*(*(mat+0)+0)))*(-1);
+    for( i=0;i<4;i++)
+ 	   (*(*(mat+2)+i)) =(aux* (*(*(mat+0)+i)))+ *(*(mat+2)+i);
+ 	
+    aux=((*(*(mat+2)+1))/ (*(*(mat+1)+1)))*(-1);
+    for( i=0;i<4;i++)
+ 	   (*(*(mat+2)+i)) =(aux* (*(*(mat+1)+i)))+ (*(*(mat+2)+i));
+ 	   	
+	if(*(*(mat+0)+0)==0&&(*(*(mat+0)+1))==0&&(*(*(mat+0)+2))==0||
+	   (*(*(mat+1)+0))==0&&(*(*(mat+1)+1))==0&&(*(*(mat+1)+2))==0||
+	  (*(*(mat+2)+0))==0&&(*(*(mat+2)+1))==0&&(*(*(mat+2)+2))==0)
+ 	  {
+ 	   cout<<"infinitas soluciones";
+ 	   exit(1);
+      }
+ 	   
+ 	z=(*(*(mat+2)+3)) / (*(*(mat+2)+2));
+ 	y=((*(*(mat+1)+2))-(((*(*(mat+1)+2))*z)))/ (*(*(mat+1)+1));
+ 	x=((*(*(mat+0)+3))-((*(*(mat+0)+1))*y)-(((*(*(mat+0)+2))*z)))/ (*(*(mat+0)+0));
+ 	
+	
+}
